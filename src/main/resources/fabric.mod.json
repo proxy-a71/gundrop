@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "gundrop",
+  "version": "${version}",
+  "name": "GunDrop",
+  "description": "Break dirt or grass for a chance at realistic firearms. 17 guns with real projectile physics.",
+  "authors": ["Zynex"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/gundrop/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.zynex.gundrop.GunDrop"],
+    "client": ["com.zynex.gundrop.client.GunDropClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
