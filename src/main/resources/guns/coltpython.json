@@ -1,0 +1,15 @@
+{
+  "displayName": "Colt Python",
+  "category": "revolver",
+  "damage": 11.0,
+  "pellets": 1,
+  "magazineSize": 6,
+  "fireRateTicks": 12,
+  "reloadTicks": 60,
+  "projectileSpeed": 2.5,
+  "spreadDegrees": 2.5,
+  "automatic": false,
+  "recoil": 2.0,
+  "explosive": false,
+  "dropWeight": 5
+}

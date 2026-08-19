@@ -1,0 +1,15 @@
+{
+  "displayName": "AK-47",
+  "category": "rifle",
+  "damage": 8.5,
+  "pellets": 1,
+  "magazineSize": 30,
+  "fireRateTicks": 4,
+  "reloadTicks": 55,
+  "projectileSpeed": 3.8,
+  "spreadDegrees": 2.5,
+  "automatic": true,
+  "recoil": 1.8,
+  "explosive": false,
+  "dropWeight": 7
+}

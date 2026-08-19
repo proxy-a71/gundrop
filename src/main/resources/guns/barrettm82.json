@@ -1,0 +1,15 @@
+{
+  "displayName": "Barrett M82",
+  "category": "sniper",
+  "damage": 28.0,
+  "pellets": 1,
+  "magazineSize": 10,
+  "fireRateTicks": 25,
+  "reloadTicks": 90,
+  "projectileSpeed": 6.0,
+  "spreadDegrees": 0.5,
+  "automatic": false,
+  "recoil": 5.0,
+  "explosive": false,
+  "dropWeight": 3
+}

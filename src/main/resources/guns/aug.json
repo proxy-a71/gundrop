@@ -1,0 +1,15 @@
+{
+  "displayName": "AUG",
+  "category": "rifle",
+  "damage": 7.5,
+  "pellets": 1,
+  "magazineSize": 30,
+  "fireRateTicks": 3,
+  "reloadTicks": 50,
+  "projectileSpeed": 4.2,
+  "spreadDegrees": 1.5,
+  "automatic": true,
+  "recoil": 1.0,
+  "explosive": false,
+  "dropWeight": 6
+}

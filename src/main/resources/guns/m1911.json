@@ -1,0 +1,15 @@
+{
+  "displayName": "M1911",
+  "category": "pistol",
+  "damage": 7.5,
+  "pellets": 1,
+  "magazineSize": 7,
+  "fireRateTicks": 6,
+  "reloadTicks": 45,
+  "projectileSpeed": 3.2,
+  "spreadDegrees": 2.0,
+  "automatic": false,
+  "recoil": 1.0,
+  "explosive": false,
+  "dropWeight": 7
+}

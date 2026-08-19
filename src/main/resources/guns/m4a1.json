@@ -1,0 +1,15 @@
+{
+  "displayName": "M4A1",
+  "category": "rifle",
+  "damage": 7.0,
+  "pellets": 1,
+  "magazineSize": 30,
+  "fireRateTicks": 3,
+  "reloadTicks": 50,
+  "projectileSpeed": 4.0,
+  "spreadDegrees": 1.8,
+  "automatic": true,
+  "recoil": 1.2,
+  "explosive": false,
+  "dropWeight": 7
+}

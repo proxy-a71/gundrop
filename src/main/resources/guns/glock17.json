@@ -1,0 +1,15 @@
+{
+  "displayName": "Glock 17",
+  "category": "pistol",
+  "damage": 6.0,
+  "pellets": 1,
+  "magazineSize": 17,
+  "fireRateTicks": 4,
+  "reloadTicks": 40,
+  "projectileSpeed": 3.5,
+  "spreadDegrees": 1.5,
+  "automatic": false,
+  "recoil": 0.8,
+  "explosive": false,
+  "dropWeight": 8
+}

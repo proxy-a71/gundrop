@@ -1,0 +1,15 @@
+{
+  "displayName": "M249",
+  "category": "rifle",
+  "damage": 6.5,
+  "pellets": 1,
+  "magazineSize": 100,
+  "fireRateTicks": 2,
+  "reloadTicks": 100,
+  "projectileSpeed": 3.5,
+  "spreadDegrees": 3.0,
+  "automatic": true,
+  "recoil": 1.5,
+  "explosive": false,
+  "dropWeight": 4
+}

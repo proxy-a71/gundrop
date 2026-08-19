@@ -1,0 +1,15 @@
+{
+  "displayName": "AWP",
+  "category": "sniper",
+  "damage": 22.0,
+  "pellets": 1,
+  "magazineSize": 5,
+  "fireRateTicks": 30,
+  "reloadTicks": 80,
+  "projectileSpeed": 5.5,
+  "spreadDegrees": 0.3,
+  "automatic": false,
+  "recoil": 4.0,
+  "explosive": false,
+  "dropWeight": 4
+}
