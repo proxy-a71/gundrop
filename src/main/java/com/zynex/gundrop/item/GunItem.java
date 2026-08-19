@@ -22,6 +22,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class GunItem extends Item {
 	public static final String NBT_AMMO = "GunDropAmmo";
@@ -168,8 +169,8 @@ public class GunItem extends Item {
 		return true;
 	}
 
-	@Override
-	public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+	// Tooltip via component is preferred in 1.21+; keep a simple override-free helper if needed.
+	public void addGunTooltip(ItemStack stack, List<Text> tooltip) {
 		tooltip.add(Text.translatable("item.gundrop.tooltip.category", data.category()));
 		tooltip.add(Text.translatable("item.gundrop.tooltip.ammo", getAmmo(stack), data.magazineSize()));
 		tooltip.add(Text.translatable("item.gundrop.tooltip.damage", data.damage()));

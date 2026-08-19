@@ -94,6 +94,11 @@ public class BulletEntity extends Entity {
 	}
 
 	@Override
+	public boolean damage(ServerWorld world, DamageSource source, float amount) {
+		return false; // bullets are not damageable
+	}
+
+	@Override
 	public void tick() {
 		super.tick();
 		age++;
@@ -108,7 +113,7 @@ public class BulletEntity extends Entity {
 
 		World world = this.getEntityWorld();
 		if (world.isClient()) {
-			world.addParticle(ParticleTypes.CRIT, start.x, start.y, start.z, 0, 0, 0);
+			world.addParticleClient(ParticleTypes.CRIT, start.x, start.y, start.z, 0.0, 0.0, 0.0);
 		}
 
 		HitResult hit = raycast(start, end);
