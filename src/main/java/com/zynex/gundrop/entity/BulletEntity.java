@@ -6,9 +6,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
+import net.minecraft.util.Uuids;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -17,6 +19,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -74,19 +77,20 @@ public class BulletEntity extends Entity {
 	}
 
 	@Override
-	protected void readCustomDataFromNbt(NbtCompound nbt) {
-		this.damage = nbt.getFloat("Damage").orElse(4f);
-		this.explosive = nbt.getBoolean("Explosive").orElse(false);
-		if (nbt.contains("Owner")) {
-			this.ownerUuid = nbt.getUuid("Owner").orElse(null);
-		}
+	protected void readCustomData(ReadView view) {
+		this.damage = view.getFloat("Damage", 4f);
+		this.explosive = view.getBoolean("Explosive", false);
+		Optional<UUID> opt = view.read("Owner", Uuids.INT_STREAM_CODEC);
+		this.ownerUuid = opt.orElse(null);
 	}
 
 	@Override
-	protected void writeCustomDataToNbt(NbtCompound nbt) {
-		nbt.putFloat("Damage", damage);
-		nbt.putBoolean("Explosive", explosive);
-		if (ownerUuid != null) nbt.putUuid("Owner", ownerUuid);
+	protected void writeCustomData(WriteView view) {
+		view.putFloat("Damage", damage);
+		view.putBoolean("Explosive", explosive);
+		if (ownerUuid != null) {
+			view.put("Owner", Uuids.INT_STREAM_CODEC, ownerUuid);
+		}
 	}
 
 	@Override
@@ -98,12 +102,13 @@ public class BulletEntity extends Entity {
 			return;
 		}
 
-		Vec3d start = this.getPos();
+		Vec3d start = this.getEntityPos();
 		Vec3d motion = this.getVelocity();
 		Vec3d end = start.add(motion);
 
-		if (this.getWorld().isClient()) {
-			this.getWorld().addParticle(ParticleTypes.CRIT, start.x, start.y, start.z, 0, 0, 0);
+		World world = this.getEntityWorld();
+		if (world.isClient()) {
+			world.addParticle(ParticleTypes.CRIT, start.x, start.y, start.z, 0, 0, 0);
 		}
 
 		HitResult hit = raycast(start, end);
@@ -118,14 +123,15 @@ public class BulletEntity extends Entity {
 	}
 
 	private HitResult raycast(Vec3d start, Vec3d end) {
-		BlockHitResult blockHit = this.getWorld().raycast(new RaycastContext(
+		World world = this.getEntityWorld();
+		BlockHitResult blockHit = world.raycast(new RaycastContext(
 				start, end, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, this));
 		double blockDist = blockHit.getType() == HitResult.Type.MISS ? Double.MAX_VALUE : blockHit.getPos().distanceTo(start);
 
 		EntityHitResult entityHit = null;
 		double entityDist = Double.MAX_VALUE;
 		Box searchBox = this.getBoundingBox().stretch(this.getVelocity()).expand(1.0);
-		for (Entity other : this.getWorld().getOtherEntities(this, searchBox,
+		for (Entity other : world.getOtherEntities(this, searchBox,
 				e -> !e.isSpectator() && e.isAlive() && (e instanceof LivingEntity) && e != getOwner())) {
 			Box box = other.getBoundingBox().expand(0.3);
 			var opt = box.raycast(start, end);
@@ -145,7 +151,7 @@ public class BulletEntity extends Entity {
 
 	private LivingEntity getOwner() {
 		if (ownerCache != null) return ownerCache;
-		if (ownerUuid != null && this.getWorld() instanceof ServerWorld sw) {
+		if (ownerUuid != null && this.getEntityWorld() instanceof ServerWorld sw) {
 			Entity e = sw.getEntity(ownerUuid);
 			if (e instanceof LivingEntity le) {
 				ownerCache = le;
@@ -156,7 +162,7 @@ public class BulletEntity extends Entity {
 	}
 
 	private void onHit(HitResult hit) {
-		if (this.getWorld() instanceof ServerWorld serverWorld) {
+		if (this.getEntityWorld() instanceof ServerWorld serverWorld) {
 			if (explosive) {
 				serverWorld.createExplosion(this, this.getX(), this.getY(), this.getZ(), 2.5f,
 						World.ExplosionSourceType.MOB);

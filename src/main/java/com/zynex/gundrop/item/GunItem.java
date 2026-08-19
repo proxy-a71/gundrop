@@ -10,6 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.consume.UseAction;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
@@ -17,8 +18,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
@@ -76,14 +75,14 @@ public class GunItem extends Item {
 	}
 
 	@Override
-	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+	public ActionResult use(World world, PlayerEntity user, Hand hand) {
 		ItemStack stack = user.getStackInHand(hand);
 		if (data.automatic()) {
 			user.setCurrentHand(hand);
-			return TypedActionResult.consume(stack);
+			return ActionResult.CONSUME;
 		} else {
 			fire(world, user, stack, hand);
-			return TypedActionResult.success(stack, world.isClient());
+			return ActionResult.SUCCESS;
 		}
 	}
 
@@ -152,7 +151,7 @@ public class GunItem extends Item {
 						0.0,
 						Math.cos(Math.toRadians(player.getYaw())) * data.recoil() * -0.01
 				);
-				player.velocityModified = true;
+				player.velocityDirty = true;
 			}
 		}
 	}

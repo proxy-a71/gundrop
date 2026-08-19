@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -49,7 +48,6 @@ public class GunDrop implements ModInitializer {
 
 	private void hookLootTables() {
 		LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-			if (key.getRegistryKey() != RegistryKeys.LOOT_TABLE) return;
 			Identifier id = key.getValue();
 			if (!id.equals(DIRT_LOOT) && !id.equals(GRASS_LOOT)) return;
 
@@ -82,7 +80,7 @@ public class GunDrop implements ModInitializer {
 				ServerPlayerEntity player = context.player();
 				ItemStack stack = player.getMainHandStack();
 				if (stack.getItem() instanceof GunItem gun) {
-					gun.tryReload(player.getWorld(), player, stack);
+					gun.tryReload(player.getEntityWorld(), player, stack);
 				}
 			});
 		});

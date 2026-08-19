@@ -1,7 +1,6 @@
 package com.zynex.gundrop;
 
 import com.zynex.gundrop.entity.BulletEntity;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -20,7 +19,7 @@ public final class ModEntities {
 		RegistryKey<EntityType<?>> key = RegistryKey.of(RegistryKeys.ENTITY_TYPE, id);
 		BULLET = Registry.register(Registries.ENTITY_TYPE, id,
 				EntityType.Builder.<BulletEntity>create(BulletEntity::new, SpawnGroup.MISC)
-						.dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+						.dimensions(0.25f, 0.25f)
 						.maxTrackingRange(64)
 						.trackingTickInterval(1)
 						.build(key));
