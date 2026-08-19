@@ -1,0 +1,15 @@
+{
+  "displayName": "MP5",
+  "category": "smg",
+  "damage": 5.0,
+  "pellets": 1,
+  "magazineSize": 30,
+  "fireRateTicks": 3,
+  "reloadTicks": 55,
+  "projectileSpeed": 3.2,
+  "spreadDegrees": 3.0,
+  "automatic": true,
+  "recoil": 0.7,
+  "explosive": false,
+  "dropWeight": 6
+}

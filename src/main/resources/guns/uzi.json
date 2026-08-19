@@ -1,0 +1,15 @@
+{
+  "displayName": "Uzi",
+  "category": "smg",
+  "damage": 4.5,
+  "pellets": 1,
+  "magazineSize": 32,
+  "fireRateTicks": 2,
+  "reloadTicks": 50,
+  "projectileSpeed": 3.0,
+  "spreadDegrees": 4.0,
+  "automatic": true,
+  "recoil": 0.6,
+  "explosive": false,
+  "dropWeight": 6
+}

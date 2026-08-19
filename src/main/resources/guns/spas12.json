@@ -1,0 +1,15 @@
+{
+  "displayName": "SPAS-12",
+  "category": "shotgun",
+  "damage": 3.5,
+  "pellets": 9,
+  "magazineSize": 8,
+  "fireRateTicks": 12,
+  "reloadTicks": 65,
+  "projectileSpeed": 2.8,
+  "spreadDegrees": 9.0,
+  "automatic": false,
+  "recoil": 3.0,
+  "explosive": false,
+  "dropWeight": 5
+}

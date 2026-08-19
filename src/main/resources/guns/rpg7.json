@@ -1,0 +1,15 @@
+{
+  "displayName": "RPG-7",
+  "category": "rocket",
+  "damage": 40.0,
+  "pellets": 1,
+  "magazineSize": 1,
+  "fireRateTicks": 40,
+  "reloadTicks": 100,
+  "projectileSpeed": 2.0,
+  "spreadDegrees": 1.0,
+  "automatic": false,
+  "recoil": 6.0,
+  "explosive": true,
+  "dropWeight": 2
+}

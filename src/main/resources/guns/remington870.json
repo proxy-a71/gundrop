@@ -1,0 +1,15 @@
+{
+  "displayName": "Remington 870",
+  "category": "shotgun",
+  "damage": 4.0,
+  "pellets": 8,
+  "magazineSize": 6,
+  "fireRateTicks": 15,
+  "reloadTicks": 70,
+  "projectileSpeed": 2.5,
+  "spreadDegrees": 8.0,
+  "automatic": false,
+  "recoil": 3.5,
+  "explosive": false,
+  "dropWeight": 6
+}

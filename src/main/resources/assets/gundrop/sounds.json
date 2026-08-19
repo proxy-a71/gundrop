@@ -1,0 +1,29 @@
+{
+  "fire_pistol": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_revolver": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_smg": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_rifle": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_shotgun": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_sniper": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "fire_rocket": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "reload_click": {
+    "sounds": ["gundrop:dry_fire"]
+  },
+  "dry_fire": {
+    "sounds": ["gundrop:dry_fire"]
+  }
+}
