@@ -12,9 +12,14 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 
 public class GunDropClient implements ClientModInitializer {
 	private static KeyBinding reloadKey;
+
+	private static final KeyBinding.Category GUNS_CATEGORY = KeyBinding.Category.create(
+			Identifier.of("gundrop", "guns")
+	);
 
 	@Override
 	public void onInitializeClient() {
@@ -24,7 +29,7 @@ public class GunDropClient implements ClientModInitializer {
 				"key.gundrop.reload",
 				InputUtil.Type.KEYSYM,
 				InputUtil.GLFW_KEY_R,
-				"category.gundrop.guns"
+				GUNS_CATEGORY
 		));
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
