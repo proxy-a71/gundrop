@@ -2,6 +2,7 @@
   "itemGroup.gundrop.guns": "GunDrop Firearms",
   "key.gundrop.reload": "Reload",
   "category.gundrop.guns": "GunDrop",
+  "key.category.gundrop.guns": "GunDrop",
   "item.gundrop.tooltip.category": "Category: %s",
   "item.gundrop.tooltip.ammo": "Ammo: %s / %s",
   "item.gundrop.tooltip.damage": "Damage: %s per hit",
